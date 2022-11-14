@@ -23,7 +23,9 @@ stages:
       displayName: List my files before build
     - script: dotnet build --configuration $(buildConfiguration)
       displayName: 'RUNING dotnet build $(buildConfiguration)'
-
+    - script: ls -a
+      displayName: List my files after build
+    
 - stage: StageB
 
   jobs:
@@ -31,5 +33,5 @@ stages:
 
     steps:
     - script: ls -a
-      displayName: List my files after build
+      displayName: List my files after build - NO BIN ANYMORE
     
