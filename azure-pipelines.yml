@@ -12,10 +12,24 @@ pool:
 variables:
   buildConfiguration: 'Release'
 
-steps:
-- script: ls -a
-  displayName: List my files before build
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'RUNING dotnet build $(buildConfiguration)'
-- script: ls -a
-  displayName: List my files after build
+stages:
+- stage: StageA
+
+  jobs:
+  - job: JobA
+
+    steps:
+    - script: ls -a
+      displayName: List my files before build
+    - script: dotnet build --configuration $(buildConfiguration)
+      displayName: 'RUNING dotnet build $(buildConfiguration)'
+
+- stage: StageB
+
+  jobs:
+  - job: JobB
+
+    steps:
+    - script: ls -a
+      displayName: List my files after build
+    
