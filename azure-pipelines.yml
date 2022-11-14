@@ -13,5 +13,10 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- script: date /t
+  displayName: Get the date
+- script: dir
+  workingDirectory: $(Agent.BuildDirectory)
+  displayName: List contents of a folder
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'RUNING dotnet build $(buildConfiguration)'
